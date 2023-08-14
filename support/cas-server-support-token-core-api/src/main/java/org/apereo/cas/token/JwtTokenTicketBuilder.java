@@ -65,7 +65,7 @@ public record JwtTokenTicketBuilder(TicketValidator ticketValidator, ExpirationP
     @Override
     public String build(final Authentication authentication,
                         final RegisteredService registeredService,
-                        final String jwtIdentifier,
+                        final String tokenIdentifier,
                         final Map<String, List<Object>> claims) {
         val attributes = new HashMap<>(authentication.getAttributes());
         attributes.putAll(authentication.getPrincipal().getAttributes());
@@ -79,7 +79,7 @@ public record JwtTokenTicketBuilder(TicketValidator ticketValidator, ExpirationP
             .serviceAudience(Set.of(casProperties.getServer().getPrefix()))
             .registeredService(Optional.ofNullable(registeredService))
             .issueDate(DateTimeUtils.dateOf(authentication.getAuthenticationDate()))
-            .jwtId(jwtIdentifier)
+            .jwtId(tokenIdentifier)
             .subject(authentication.getPrincipal().getId())
             .validUntilDate(validUntilDate)
             .attributes(attributes)

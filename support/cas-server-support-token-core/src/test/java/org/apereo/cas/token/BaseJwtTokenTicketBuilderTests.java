@@ -72,7 +72,7 @@ import static org.mockito.Mockito.*;
 })
 public abstract class BaseJwtTokenTicketBuilderTests {
     @Autowired
-    @Qualifier(TokenTicketBuilder.BEAN_NAME)
+    @Qualifier("jwtTokenTicketBuilder")
     protected TokenTicketBuilder tokenTicketBuilder;
 
     @Autowired

@@ -68,12 +68,12 @@ public interface TokenTicketBuilder {
      *
      * @param authentication    the authentication
      * @param registeredService the registered service
-     * @param jwtIdentifier     the jwt identifier
+     * @param tokenIdentifier   the token identifier
      * @param claims            the claims
      * @return the token
      */
     String build(Authentication authentication,
                  RegisteredService registeredService,
-                 String jwtIdentifier,
+                 String tokenIdentifier,
                  Map<String, List<Object>> claims);
 }

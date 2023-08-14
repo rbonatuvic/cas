@@ -113,7 +113,7 @@ public class TokenCoreConfiguration {
 
         @RefreshScope(proxyMode = ScopedProxyMode.DEFAULT)
         @Bean
-        @ConditionalOnMissingBean(name = TokenTicketBuilder.BEAN_NAME)
+        @ConditionalOnMissingBean(name = "jwtTokenTicketBuilder")
         public TokenTicketBuilder tokenTicketBuilder(
             final CasConfigurationProperties casProperties,
             @Qualifier("tokenTicketValidator")
