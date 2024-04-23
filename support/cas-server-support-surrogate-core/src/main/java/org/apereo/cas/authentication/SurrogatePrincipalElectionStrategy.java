@@ -2,6 +2,7 @@ package org.apereo.cas.authentication;
 
 import org.apereo.cas.authentication.principal.DefaultPrincipalElectionStrategy;
 import org.apereo.cas.authentication.principal.Principal;
+import org.apereo.cas.authentication.principal.ImpersonatedPrincipal;
 
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -26,7 +27,10 @@ public class SurrogatePrincipalElectionStrategy extends DefaultPrincipalElection
 
     @Override
     protected Map<String, List<Object>> getPrincipalAttributesForPrincipal(final Principal principal, final Map<String, List<Object>> principalAttributes) {
-        return principal.getAttributes();
+        if (principal instanceof ImpersonatedPrincipal) {
+            return principal.getAttributes();
+        }
+        return super.getPrincipalAttributesForPrincipal(principal, principalAttributes);
     }
 
     @Override
